@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import "./CategoriBox.css"
-import { Appcontext } from '../../Appcontext/Appcontext';
+import { Appcontext } from '../../Appcontext/Appcontext.jsx';
 import { useNavigate, useLocation } from 'react-router-dom';
 export default function CategoriBox({ image, title }) {
     const { category, setcategory } = useContext(Appcontext);
