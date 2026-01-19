@@ -7,12 +7,13 @@ export default function Navbottom() {
     const { category, setcategory, search, setsearch } = useContext(Appcontext);
 
 
+    const navigate = useNavigate()
     const location = useLocation()
 
 
     const Handlesearchchange = (e) => {
         if (location.pathname !== "/shop") {
-            navigaate("/shop")
+            navigate("/shop")
         }
         setsearch(e.target.value)
     }
@@ -31,17 +32,16 @@ export default function Navbottom() {
 
 
 
-    const navigaate = useNavigate()
     const handlecategory = (e) => {
         if (location.pathname !== "/shop") {
-            navigaate("/shop")
+            navigate("/shop")
         }
         setcategory(e.target.value)
     }
 
     const handldropdown = (cat) => () => {
         if (location.pathname !== "/shop") {
-            navigaate("/shop")
+            navigate("/shop")
         }
         setcategory(cat.name)
     }

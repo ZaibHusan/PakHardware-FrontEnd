@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { Appcontext } from "./Appcontext";
+import { Appcontext } from "./Appcontext.jsx";
 import { toast } from "react-toastify";
 
 export default function PrivateRoute({ children }) {
