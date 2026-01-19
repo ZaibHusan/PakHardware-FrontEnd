@@ -1,20 +1,101 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Product.css";
 import Navbottom from "../../Components/Navbottom/Navbottom";
-import { useNavigate } from "react-router-dom";
-import Productcard from "../../Components/Productcard/Productcard";
+import { useNavigate, useParams } from "react-router-dom";
 import Discount from "../../Components/Discount/Discount";
+import api from "../../Appcontext/api.js";
+import { toast } from "react-toastify";
+import Productcard from "../../Components/Productcard/Productcard.jsx";
+import ProductSkeleton from "./ProductSkeleton/ProductSkeleton.jsx";
+import { delay } from "../../Appcontext/delay.js";
+import { Appcontext } from "../../Appcontext/Appcontext.jsx";
+import { CartContext } from "../../Appcontext/CartContext.jsx";
 
 export default function Product() {
+    const { products } = useContext(Appcontext);
+    const [Relatedproducts, setRelatedproducts] = useState([]);
+    const { addToCart } = useContext(CartContext);
+    const [adding, setAdding] = useState(false);
     const navigate = useNavigate();
-    const [selectedImage, setSelectedImage] = useState(0);
-    const productImages = [
-        "https://prestashop.codezeel.com/PRS23/PRS230555/default/11-large_default/porter-cable-pcck640-impact-driver-14-inch.jpg",
-        "https://prestashop.codezeel.com/PRS23/PRS230555/default/12-large_default/porter-cable-pcck640-impact-driver-14-inch.jpg",
-        "https://prestashop.codezeel.com/PRS23/PRS230555/default/15-large_default/porter-cable-pcck640-impact-driver-14-inch.jpg",
-        "https://prestashop.codezeel.com/PRS23/PRS230555/default/13-large_default/porter-cable-pcck640-impact-driver-14-inch.jpg"
-    ];
+    const { id } = useParams();
 
+    const [product, setProduct] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(0);
+    const [loading, setLoading] = useState(true);
+
+    const fetchSingleProduct = async () => {
+
+        try {
+            setLoading(true);
+            const res = await api.get(`/Product/getproduct/${id}`);
+
+            if (res.data.success) {
+                setProduct(res.data.product);
+            } else {
+                toast.error(res.data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("Failed to load product");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchSingleProduct();
+    }, [id]);
+
+
+
+
+    const arrangeRelatedProduct = () => {
+        if (!products.length || !product) return;
+
+        // 1. Remove current product
+        const filtered = products.filter(p => p._id !== product._id);
+
+        // 2. Match by category
+        let related = filtered.filter(p => p.category === product.category);
+
+        // 3. If not enough, match by brand
+        if (related.length < 6) {
+            const byBrand = filtered.filter(p =>
+                p.brand === product.brand && !related.includes(p)
+            );
+            related = [...related, ...byBrand];
+        }
+
+        // 4. Shuffle
+        related = related.sort(() => 0.5 - Math.random());
+
+        // 5. Take only 6
+        setRelatedproducts(related.slice(0, 6));
+    };
+
+
+    const handleAddToCart = async (e) => {
+        e.stopPropagation(); // stop card navigation
+        if (adding) return;
+
+        try {
+            setAdding(true);
+            await addToCart(product);
+        } finally {
+            setAdding(false);
+        }
+    };
+
+
+    useEffect(() => {
+        arrangeRelatedProduct();
+    }, [product, products]);
+
+
+    if (loading) return <ProductSkeleton />;
+    if (!product) return <div style={{ padding: 40 }}>Product not found</div>;
+
+    const images = product.image || [];
 
     return (
         <div className="Product">
@@ -26,7 +107,7 @@ export default function Product() {
                 <span>{">"}</span>
                 <span onClick={() => navigate("/shop")}>Shop</span>
                 <span>{">"}</span>
-                <p>Porter Cable PCCK640 Impact Driver 14</p>
+                <p>{product.name}</p>
             </div>
 
             {/* Main */}
@@ -34,70 +115,68 @@ export default function Product() {
                 {/* Gallery */}
                 <div className="product-gallery">
                     <div className="product-thumbs">
-                        {productImages.map((img, i) => (
-                            <img key={i} onClick={() => setSelectedImage(i)} src={img} alt="product" />
+                        {images.map((img, i) => (
+                            <img
+                                key={i}
+                                onClick={() => setSelectedImage(i)}
+                                src={img.url}
+                                alt="product"
+                            />
                         ))}
                     </div>
 
                     <div className="product-main-image">
-                        <img src={productImages[selectedImage]} alt="main product" />
+                        <img
+                            src={images[selectedImage]?.url}
+                            alt="main product"
+                        />
                     </div>
                 </div>
 
                 {/* Info */}
                 <div className="product-info">
-                    <p className="product-brand">Porter Cable</p>
+                    <p className="product-brand">{product.brand}</p>
 
-                    <h1 className="product-title">
-                        Porter Cable PCCK640 Impact Driver 14"
-                    </h1>
+                    <h1 className="product-title">{product.name}</h1>
 
                     <div className="product-price">
-                        <span className="old">$29.99</span>
-                        <span className="new">$12.99</span>
-                    </div>
-
-                    <div className="product-review">
-                        <div className="stars">
-                            {Array(5)
-                                .fill(0)
-                                .map((_, i) => (
-                                    <span key={i} className="material-symbols-outlined">
-                                        star
-                                    </span>
-                                ))}
-                        </div>
-                        <span className="review-text">Based on 4 reviews</span>
+                        <span className="old">Rs {product.originalPrice}</span>
+                        <span className="new">Rs {product.price}</span>
                     </div>
 
                     <div className="product-actions">
-                        <button className="btn-outline">Add to cart</button>
-                        <button className="btn-solid">Buy now</button>
+                        <button
+                            className={`btn-outline ${adding ? "btn-loading" : ""}`}
+                            onClick={handleAddToCart}
+                            disabled={adding}
+                        >
+                            {adding ? (
+                                <span className="btn-spinner"></span>
+                            ) : (
+                                "Add to cart"
+                            )}
+                        </button>
                     </div>
 
                     <ul className="product-policies">
                         <li>
-                            <span class="material-symbols-outlined">
-                                local_shipping
-                            </span>
+                            <span className="material-symbols-outlined">local_shipping</span>
                             <div>
                                 <strong>Free Shipping & Returns</strong>
-                                <p>Orders over $99</p>
+                                <p>Orders over Rs 5000</p>
                             </div>
                         </li>
+
                         <li>
-                            <span className="material-symbols-outlined">
-                                schedule
-                            </span>
+                            <span className="material-symbols-outlined">schedule</span>
                             <div>
                                 <strong>Estimated Delivery</strong>
                                 <p>Dispatched within 24 hours</p>
                             </div>
                         </li>
+
                         <li>
-                            <span className="material-symbols-outlined">
-                                lock
-                            </span>
+                            <span className="material-symbols-outlined">lock</span>
                             <div>
                                 <strong>Security Policy</strong>
                                 <p>Secure payments & data protection</p>
@@ -111,28 +190,33 @@ export default function Product() {
             <section className="product-description">
                 <div className="description-text">
                     <h2>About this product</h2>
-                    <p>
-                        This robust tool part is engineered for high precision and long-lasting performance. Manufactured from premium-grade materials, it ensures excellent resistance to wear, corrosion, and impact. Compatible with a variety of tools and systems, it offers a secure fit, helping maintain peak operational efficiency in demanding industrial environments.In the physical world, tools can range from simple hand tools like hammers, screwdrivers, and wrenches to complex power tools such as drills, grinders, and CNC machines..
-
-                     </p>
+                    <p>{product.description}</p>
                 </div>
 
                 <div className="description-image">
-                    <img src={productImages[0]} alt="detail" />
+                    <img
+                        src={images[0]?.url}
+                        alt="detail"
+                    />
                 </div>
             </section>
-
             {/* Related */}
+
             <section className="related-products">
                 <h2>You might also like</h2>
                 <div className="related-grid">
-                    {Array(10)
-                        .fill(0)
-                        .map((_, i) => (
-                            <Productcard key={i} />
-                        ))}
+                    {Relatedproducts.length > 0 ? (
+                        Relatedproducts.map((item) => (
+                            <Productcard product={item} key={item._id} />
+                        ))
+                    ) : (
+                        <p style={{ color: "#777", fontSize: "0.9rem" }}>
+                            No related products found
+                        </p>
+                    )}
                 </div>
             </section>
+
 
             <Discount />
         </div>

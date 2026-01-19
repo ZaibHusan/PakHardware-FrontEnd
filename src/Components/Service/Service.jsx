@@ -1,5 +1,6 @@
 import React from 'react'
 import './Service.css'
+import { useNavigate } from 'react-router-dom'
 export default function Service() {
     const services = [
         {
@@ -19,7 +20,10 @@ export default function Service() {
         }
     ];
 
-
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/shop')
+    }
     return (
         <div className='Service'>
             <div className="service-container">
@@ -40,7 +44,7 @@ export default function Service() {
                 <div className="service-banner-text">
                     <p>Exclusive Month End Offer</p>
                     <h1><span>up to 50% off</span><span>on selected products</span></h1>
-                    <button>Shop now</button>
+                    <button onClick={handleClick}>Shop now</button>
                 </div>
             </div>
         </div>

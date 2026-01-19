@@ -1,26 +1,67 @@
-import React from 'react'
-import "./Productcard.css"
-import { useNavigate } from 'react-router-dom'
-export default function Productcard() {
-    const navigate = useNavigate();
-    return (
-        <div className="Productcard">
-            <div onClick={()=>navigate("/product/:id")}  className="productcard-conatiner">
-                <div className="product-img">
-                    <img src="https://prestashop.codezeel.com/PRS23/PRS230555/default/11-home_default/porter-cable-pcck640-impact-driver-14-inch.jpg" alt="" />
-                </div>
-                <hr />
-                <div className="product-details">
-                    <p>Porter Cable PCCK640 Impact Driver 14"</p>
-                    <div className="Star">
-                        {Array(5).fill(0).map((index) => <span key={index} className="material-symbols-outlined">star</span>)}
-                    </div>
-                    <div className="price">
-                        <p>$ 9.99</p>
-                    </div>
-                    <button>Add to cart</button>
-                </div>
-            </div>
+import React, { useContext, useState } from "react";
+import "./Productcard.css";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../Appcontext/CartContext";
+
+export default function Productcard({ product }) {
+  const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
+  const [adding, setAdding] = useState(false);
+
+  const discount =
+    product.originalPrice > product.price
+      ? Math.round(
+          ((product.originalPrice - product.price) / product.originalPrice) * 100
+        )
+      : 0;
+
+  const handleAddToCart = async (e) => {
+    e.stopPropagation(); // stop card navigation
+    if (adding) return;
+
+    try {
+      setAdding(true);
+      await addToCart(product);
+    } finally {
+      setAdding(false);
+    }
+  };
+
+  return (
+    <div
+      className="Productcard"
+      onClick={() => navigate(`/product/${product._id}`)}
+    >
+      <div className="productcard-container">
+
+        {discount > 0 && (
+          <div className="discount-badge">-{discount}%</div>
+        )}
+
+        <div className="product-img">
+          <img src={product.image[0]?.url} alt={product.name} />
         </div>
-    )
+
+        <div className="product-info">
+          <p className="brand">{product.brand}</p>
+          <p className="name">{product.name}</p>
+
+          <div className="price-row">
+            <span className="price">Rs {product.price}</span>
+            {product.originalPrice > product.price && (
+              <span className="old-price">Rs {product.originalPrice}</span>
+            )}
+          </div>
+
+          <button
+            className="cart-btn"
+            onClick={handleAddToCart}
+            disabled={adding}
+          >
+            {adding ? "Adding..." : "Add to cart"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -1,0 +1,36 @@
+/* Wrapper keeps things tight and aligned */
+.orders-list-wrapper {
+  width: 100%;
+  margin-top: 12px;       /* reduced */
+}
+
+/* Compact professional grid */
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;              /* reduced from 18+ */
+  align-items: stretch;
+}
+
+/* Empty state */
+.no-orders {
+  text-align: center;
+  color: #777;
+  margin: 24px 0;         /* reduced vertical gap */
+  font-size: 0.85rem;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .orders-grid {
+    gap: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .orders-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

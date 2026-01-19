@@ -7,6 +7,11 @@
   padding-top: 50px;
 }
 
+.Footer a {
+  text-decoration: none;
+  color: #cccccc;
+}
+
 /* ================= CONTAINER ================= */
 
 .footer-container {

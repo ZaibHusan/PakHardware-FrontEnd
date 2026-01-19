@@ -103,9 +103,13 @@
 }
 
 /* ================= TEAM ================= */
+
 .our-team {
   background: #f7f7f7;
   padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .out-team-header {

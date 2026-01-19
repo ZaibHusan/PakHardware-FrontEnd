@@ -4,12 +4,18 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import ScrollToTop from './Components/ScrollTop.jsx'
+import { Contextprovider } from './Appcontext/Appcontext.jsx'
+import { CartProvider } from './Appcontext/CartContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <ScrollToTop />
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
+    <Contextprovider>
+      <CartProvider >
+        <StrictMode>
+          <BrowserRouter>
+            <ScrollToTop />
+            <App />
+          </BrowserRouter>
+        </StrictMode>
+      </CartProvider>
+    </Contextprovider>
 )

@@ -1,21 +1,22 @@
 import React from 'react'
 import './Topbar.css'
+import { useNavigate } from 'react-router-dom'
 export default function Topbar() {
+    const navigate = useNavigate();
     return (
         <div className="Topbar">
             <div className="Tobar-left">
-                <p>Get Upto 25% Cashback On First Order: GET25OFF - <span>Shop Now</span></p>
+                <p>Get Upto 25% Cashback On First Order: GET25OFF - <span onClick={() => navigate('/shop')}>Shop Now</span></p>
             </div>
             <div className="Topbar-right">
                 <ul>
-                    <li>Order Tracking</li>
                     <span>|</span>
-                    <li>Help Center</li>
+                    <li onClick={() => navigate('/contact')}>Help Center</li>
                     <span>|</span>
                     <li>English</li>
                     <span>|</span>
                     <li>
-                        $USD
+                        PKR
                         <span className="material-symbols-outlined">
                             keyboard_arrow_down
                         </span>

@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../../assets'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import './Navbar.css'
+import { Appcontext } from '../../Appcontext/Appcontext'
+import CartIcon from '../CartIcon/CartIcon'
 export default function Navbar() {
     const [tougle, settougle] = useState(false)
 
+    const { isLogin } = useContext(Appcontext);
     useEffect(() => {
         document.body.style.overflow = tougle ? "hidden" : "auto";
     }, [tougle])
+
+
+    const navigate = useNavigate();
+
+
     return (
         <header className='Navbar'>
             <div className="nav-container">
@@ -36,15 +44,17 @@ export default function Navbar() {
 
                     </div>
                     <div className="nav-cart">
-                        <span class="material-symbols-outlined">
-                            add_shopping_cart
-                        </span>
+                        <CartIcon />
                     </div>
-                    <div className="nav-user">
-                        <span className="material-symbols-outlined">
-                            person
-                        </span>
+                    <div
+                        className={`nav-user ${isLogin ? "logged-in" : "guest"}`}
+                        onClick={() => {
+                            isLogin ? navigate("/profile") : navigate("/AuthPage");
+                        }}
+                    >
+                        <span className="material-symbols-outlined">person</span>
                     </div>
+
                 </div>
             </div>
 

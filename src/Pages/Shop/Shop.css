@@ -51,6 +51,12 @@
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+
+.category-list li:hover {
+  background: #f0f0f0;
 }
 
 .category-list li:last-child {
@@ -122,7 +128,8 @@
   position: relative;
   flex: 1;
   height: 6px;
-  background: #ddd;          /* MAIN LINE */
+  background: #ddd;
+  /* MAIN LINE */
   border-radius: 3px;
 }
 
@@ -294,4 +301,155 @@
     padding: 6px 8px;
     font-size: 0.8rem;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Button css */
+
+
+
+
+/* ================= PAGINATION WRAPPER ================= */
+.pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ================= PAGE INFO TEXT ================= */
+.page-info {
+  font-size: 0.85rem;
+  color: #555;
+  font-weight: 500;
+}
+
+/* ================= PAGINATION BUTTON GROUP ================= */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ================= PAGE BUTTON ================= */
+.page-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: 1px solid #de322c;
+  background: transparent;
+  color: #de322c;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.page-btn span {
+  font-size: 18px;
+}
+
+/* hover effect */
+.page-btn:hover {
+  background: #de322c;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(222, 50, 44, 0.25);
+}
+
+/* disabled state */
+.page-btn:disabled {
+  background: #f2f2f2;
+  color: #aaa;
+  border-color: #ddd;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* prevent hover on disabled */
+.page-btn:disabled:hover {
+  background: #f2f2f2;
+  color: #aaa;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ================= LOADING BUTTON ================= */
+.loading-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: 1px solid #de322c;
+  background: #de322c;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+/* ================= SPINNER ================= */
+.loader {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 576px) {
+  .pagination-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pagination {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .page-btn,
+  .loading-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+@media (max-width:350px) {
+  .shop-right {
+    padding: 20px 0px;
+  }
+
+  .shop-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
 }

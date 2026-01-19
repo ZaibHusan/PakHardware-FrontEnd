@@ -221,3 +221,40 @@
     height: 300px;
   }
 }
+
+
+
+
+
+/* ================= LOADING BUTTON ================= */
+
+.loading-btn {
+  cursor: not-allowed;
+  opacity: 0.7;
+  background: #de322c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= SPINNER ================= */
+
+.btn-loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ffffff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

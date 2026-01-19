@@ -1,0 +1,127 @@
+.profile-page {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+}
+
+/* Main container */
+.profile-content {
+  padding: 20px 16px 40px;
+  max-width: 1200px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+/* Section title */
+.profile-content h3 {
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: 0.2px;
+}
+
+/* ===== Status Cards Section ===== */
+.order-status-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.status-card {
+  background: #ffffff;
+  padding: 16px 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.status-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(0,0,0,0.02), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+.status-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.status-card h4 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-card span {
+  margin-top: 6px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Status colors */
+.status-card.pending span {
+  color: #f39c12;
+}
+
+.status-card.processing span {
+  color: #3498db;
+}
+
+.status-card.shipped span {
+  color: #9b59b6;
+}
+
+.status-card.delivered span {
+  color: #27ae60;
+}
+
+/* ===== Orders Section Wrapper ===== */
+.profile-orders-section {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .profile-content {
+    padding: 18px 14px 32px;
+  }
+
+  .status-card {
+    padding: 14px 16px;
+  }
+
+  .status-card span {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .profile-content {
+    padding: 14px 12px 28px;
+  }
+
+  .status-card {
+    border-radius: 12px;
+  }
+
+  .status-card span {
+    font-size: 1.3rem;
+  }
+}

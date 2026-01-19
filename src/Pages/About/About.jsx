@@ -1,36 +1,36 @@
 import React from 'react'
 import "./About.css"
 import { useNavigate } from 'react-router-dom'
+import { assets } from '../../assets';
 
 export default function About() {
   const navigate = useNavigate();
-const teamMembers = [
-  {
-    name: "Ahmed Khan",
-    role: "Store Manager",
-    experience: "8+ years in hardware retail",
-    image: "https://randomuser.me/api/portraits/men/32.jpg"
-  },
-  {
-    name: "Usman Ali",
-    role: "Sales & Customer Support",
-    experience: "5 years customer handling",
-    image: "https://randomuser.me/api/portraits/men/45.jpg"
-  },
-  {
-    name: "Bilal Ahmad",
-    role: "Technical Advisor",
-    experience: "6 years tools & machinery expertise",
-    image: "https://randomuser.me/api/portraits/men/61.jpg"
-  },
-  {
-    name: "Saad Hussain",
-    role: "Inventory Manager",
-    experience: "4 years stock & supply management",
-    image: "https://randomuser.me/api/portraits/men/19.jpg"
-  },
-];
-
+  const teamMembers = [
+    {
+      name: "Sohaib Khan",
+      role: "Owner & Founder",
+      experience: "Managing hardware business operations, suppliers & customer relations",
+      image: assets.Sohaib
+    },
+    {
+      name: "Mr Tayyab",
+      role: "Sales & Technical Support Manager",
+      experience: "Guides customers on tools, machinery and product usage",
+      image: assets.Tayyab
+    },
+    {
+      name: "Usman Khan",
+      role: "Store Manager",
+      experience: "Oversees daily store operations, inventory and staff management",
+      image: assets.Usman
+    },
+    {
+      name: "Irshad Khan",
+      role: "Customer Support Assistant",
+      experience: "Handles walk-in customers, billing and basic product support",
+      image: "https://cdn-icons-png.flaticon.com/512/847/847969.png"
+    }
+  ];
 
   return (
     <div className="About">
@@ -77,7 +77,7 @@ const teamMembers = [
 
 
 
-       <div className="mapp-address">
+      <div className="mapp-address">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d408.8599780314194!2d72.01794015096378!3d34.9345508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dc74ec35c63b81%3A0x739f8cf1f1fc6457!2sW2M9%2BR9P%2C%20Toormang%2C%20Pakistan!5e0!3m2!1sen!2s!4v1767396971308!5m2!1sen!2s"
           style={{ border: 0 }}

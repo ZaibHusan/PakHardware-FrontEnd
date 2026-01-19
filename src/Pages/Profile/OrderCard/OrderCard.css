@@ -1,0 +1,114 @@
+.order-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  transition: 0.25s ease;
+  animation: fadeIn 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+}
+
+.order-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.order-card-top h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #111;
+  font-weight: 600;
+}
+
+.order-date {
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  color: #fff;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.status-badge.pending { background: #f39c12; }
+.status-badge.processing { background: #3498db; }
+.status-badge.shipped { background: #9b59b6; }
+.status-badge.delivered { background: #27ae60; }
+.status-badge.cancelled { background: #e74c3c; }
+
+.order-card-middle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.order-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-row.total strong {
+  color: #111;
+  font-size: 0.95rem;
+}
+
+.order-address {
+  background: #f7f7f7;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.order-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.payment-method {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.order-card-bottom button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.order-card-bottom button:hover {
+  background: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
