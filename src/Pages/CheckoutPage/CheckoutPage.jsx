@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import "./Checkout.css";
-import ShippingForm from "./ShippingForm";
-import PaymentMethod from "./PaymentMethod";
-import OrderSummary from "./OrderSummary";
+import ShippingForm from "./ShippingForm.jsx";
+import PaymentMethod from "./PaymentMethod.jsx";
+import OrderSummary from "./OrderSummary.jsx";
 import api from "../../Appcontext/api.js";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";

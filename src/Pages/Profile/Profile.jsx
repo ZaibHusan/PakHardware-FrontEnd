@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import ProfileHeader from "./profileheader/profileheader";
-import OrderTabs from "./OrderTabs/OrderTabs";
-import OrdersList from "./OrdersList/OrdersList";
+import ProfileHeader from "./profileheader/profileheader.jsx";
+import OrderTabs from "./OrderTabs/OrderTabs.jsx";
+import OrdersList from "./OrdersList/OrdersList.jsx";
 import "./Profile.css";
-import { Appcontext } from "../../Appcontext/Appcontext";
+import { Appcontext } from "../../Appcontext/Appcontext.jsx";
 import { useNavigate } from "react-router-dom";
 import api from "../../Appcontext/api.js";
 import { toast } from "react-toastify";

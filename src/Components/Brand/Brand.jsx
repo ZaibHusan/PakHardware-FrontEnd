@@ -1,6 +1,6 @@
 import React from 'react'
 import './Brand.css'
-import Title from '../Title/Title';
+import Title from '../Title/Title.jsx';
 export default function Brand() {
 const brands = [
   { name: "Asana", logo: "https://prestashop.codezeel.com/PRS23/PRS230555/default/img/m/8.jpg" },

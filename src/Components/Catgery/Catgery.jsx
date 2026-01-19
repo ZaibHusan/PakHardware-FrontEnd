@@ -1,5 +1,5 @@
 import React from "react";
-import CategoriBox from "../CategoriBox/CategoriBox";
+import CategoriBox from "../CategoriBox/CategoriBox.jsx";
 import "./Catgery.css";
 
 export default function Catgery() {

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react'
-import Productcard from '../Productcard/Productcard'
+import Productcard from '../Productcard/Productcard.jsx'
 import "./Product.css"
-import { Appcontext } from '../../Appcontext/Appcontext'
-import ProductSkeleton from './ProductSkeleton/ProductSkeleton'
+import { Appcontext } from '../../Appcontext/Appcontext.jsx'
+import ProductSkeleton from './ProductSkeleton/ProductSkeleton.jsx'
 export default function Products() {
     const { products, setpage, setlimit } = useContext(Appcontext)
 

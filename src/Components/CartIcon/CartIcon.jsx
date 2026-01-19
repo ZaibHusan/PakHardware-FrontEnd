@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../Appcontext/CartContext";
+import { CartContext } from "../../Appcontext/CartContext.jsx";
 import "./CartIcon.css";
 import CountUp from "react-countup";
 

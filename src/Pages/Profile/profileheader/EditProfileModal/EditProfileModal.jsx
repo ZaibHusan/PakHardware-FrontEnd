@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import "./EditProfileModal.css";
-import { assets } from "../../../../assets";
+import { assets } from "../../../../assets/index.js";
 import api from "../../../../Appcontext/api.js";
 import { toast } from "react-toastify";
-import { Appcontext } from "../../../../Appcontext/Appcontext";
+import { Appcontext } from "../../../../Appcontext/Appcontext.jsx";
 
 export default function EditProfileModal({ user, onClose }) {
     const [name, setName] = useState(user.name || "");

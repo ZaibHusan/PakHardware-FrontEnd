@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Shop_banner from '../../Components/Shop-banner/Shop-banner'
-import Productcard from '../../Components/Productcard/Productcard';
-import Shopdecription from './shopdecription/shopdecription';
+import Shop_banner from '../../Components/Shop-banner/Shop-banner.jsx'
+import Productcard from '../../Components/Productcard/Productcard.jsx';
+import Shopdecription from './shopdecription/shopdecription.jsx';
 import "./shop.css"
-import { Appcontext } from '../../Appcontext/Appcontext';
-import ShopRightSkeleton from './Skeleton/Skeleton';
+import { Appcontext } from '../../Appcontext/Appcontext.jsx';
+import ShopRightSkeleton from './Skeleton/Skeleton.jsx';
 
 export default function Shop() {
   const [buttonloading, setbuttonloading] = useState(false);

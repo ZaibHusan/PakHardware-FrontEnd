@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Productcard.css";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../Appcontext/CartContext";
+import { CartContext } from "../../Appcontext/CartContext.jsx";
 
 export default function Productcard({ product }) {
   const navigate = useNavigate();

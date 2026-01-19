@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Navbottom.css'
-import { Appcontext } from '../../Appcontext/Appcontext';
+import { Appcontext } from '../../Appcontext/Appcontext.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 export default function Navbottom() {
     const [toggle, setToggle] = useState(false);

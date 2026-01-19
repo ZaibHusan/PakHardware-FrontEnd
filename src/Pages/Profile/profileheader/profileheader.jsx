@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import EditProfileModal from "./EditProfileModal/EditProfileModal";
+import EditProfileModal from "./EditProfileModal/EditProfileModal.jsx";
 import "./ProfileHeader.css";
-import { assets } from "../../../assets";
-import { Appcontext } from "../../../Appcontext/Appcontext";
+import { assets } from "../../../assets/index.js";
+import { Appcontext } from "../../../Appcontext/Appcontext.jsx";
 import api from "../../../Appcontext/api.js";
 
 export default function ProfileHeader({ user }) {

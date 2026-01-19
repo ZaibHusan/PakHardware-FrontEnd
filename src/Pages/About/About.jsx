@@ -1,7 +1,7 @@
 import React from 'react'
 import "./About.css"
 import { useNavigate } from 'react-router-dom'
-import { assets } from '../../assets';
+import { assets } from '../../assets/index.js';
 
 export default function About() {
   const navigate = useNavigate();

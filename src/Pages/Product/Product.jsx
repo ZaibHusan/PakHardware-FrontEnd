@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Product.css";
-import Navbottom from "../../Components/Navbottom/Navbottom";
+import Navbottom from "../../Components/Navbottom/Navbottom.jsx";
 import { useNavigate, useParams } from "react-router-dom";
-import Discount from "../../Components/Discount/Discount";
+import Discount from "../../Components/Discount/Discount.jsx";
 import api from "../../Appcontext/api.js";
 import { toast } from "react-toastify";
 import Productcard from "../../Components/Productcard/Productcard.jsx";

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CountUp from "react-countup";
-import { CartContext } from "../../Appcontext/CartContext";
+import { CartContext } from "../../Appcontext/CartContext.jsx";
 
 export default function CartSummary() {
   const { cart } = useContext(CartContext);

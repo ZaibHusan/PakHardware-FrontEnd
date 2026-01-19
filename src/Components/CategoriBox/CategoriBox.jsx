@@ -4,11 +4,11 @@ import { Appcontext } from '../../Appcontext/Appcontext';
 import { useNavigate, useLocation } from 'react-router-dom';
 export default function CategoriBox({ image, title }) {
     const { category, setcategory } = useContext(Appcontext);
-    const navigaate = useNavigate()
+    const navigate = useNavigate()
     const location = useLocation()
     const handlecategory = () => {
         if (location.pathname !== "/shop") {
-            navigaate("/shop")
+            navigate("/shop")
         }
         const category = (title) => {
             if (title === "Fasteners" || title === "Paint & Coatings") {

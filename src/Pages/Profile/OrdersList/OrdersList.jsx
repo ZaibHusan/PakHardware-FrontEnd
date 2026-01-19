@@ -1,5 +1,5 @@
 import React from "react";
-import OrderCard from "../OrderCard/OrderCard";
+import OrderCard from "../OrderCard/OrderCard.jsx";
 import "./OrdersList.css";
 
 export default function OrdersList({ orders }) {

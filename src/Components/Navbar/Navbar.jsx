@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { assets } from '../../assets'
+import { assets } from '../../assets/index.js'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import './Navbar.css'
-import { Appcontext } from '../../Appcontext/Appcontext'
-import CartIcon from '../CartIcon/CartIcon'
+import { Appcontext } from '../../Appcontext/Appcontext.jsx'
+import CartIcon from '../CartIcon/CartIcon.jsx'
 export default function Navbar() {
     const [tougle, settougle] = useState(false)
 

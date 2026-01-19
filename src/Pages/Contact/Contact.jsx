@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import "./Contact.css"
-import Discount from '../../Components/Discount/Discount'
+import Discount from '../../Components/Discount/Discount.jsx'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import api from '../../Appcontext/api'
+import api from '../../Appcontext/api.js'
 export default function Contact() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);

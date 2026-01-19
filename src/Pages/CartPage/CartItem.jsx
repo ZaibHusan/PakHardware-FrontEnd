@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CartContext } from "../../Appcontext/CartContext";
-import { assets } from "../../assets";
+import { CartContext } from "../../Appcontext/CartContext.jsx";
+import { assets } from "../../assets/index.js";
 
 export default function CartItem({ item }) {
   const { updateQuantity, removeFromCart } = useContext(CartContext);
