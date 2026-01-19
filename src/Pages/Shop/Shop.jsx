@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Shop_banner from '../../Components/Shop-banner/Shop-banner.jsx'
 import Productcard from '../../Components/Productcard/Productcard.jsx';
 import Shopdecription from './shopdecription/shopdecription.jsx';
-import "./shop.css"
+import "./Shop.css"
 import { Appcontext } from '../../Appcontext/Appcontext.jsx';
 import ShopRightSkeleton from './Skeleton/Skeleton.jsx';
 
