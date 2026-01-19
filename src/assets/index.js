@@ -1,4 +1,4 @@
-import logo from './Logo.png'
+import logo from './logo.png'
 import Tayyab from "./Tayyab.png"
 import Usman from "./Usman.png"
 import Sohaib from "./Shoyyab.png"
