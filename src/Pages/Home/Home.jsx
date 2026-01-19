@@ -1,4 +1,5 @@
 import React from 'react'
+import './Home.css'
 import Hero from '../../Components/Hero/Hero.jsx'
 import Title from '../../Components/Title/Title.jsx'
 import Catgery from '../../Components/Catgery/Catgery.jsx'
