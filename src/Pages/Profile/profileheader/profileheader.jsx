@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import EditProfileModal from "./EditProfileModal/EditProfileModal.jsx";
-import "./ProfileHeader.css";
+import "./profileheader.css";
 import { assets } from "../../../assets/index.js";
 import { Appcontext } from "../../../Appcontext/Appcontext.jsx";
 import api from "../../../Appcontext/api.js";
