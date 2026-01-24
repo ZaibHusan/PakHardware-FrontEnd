@@ -79,4 +79,13 @@
     
 }
 
+@media (max-width: 500px) {
+    .Topbar {
+        padding: 5px 10px;
+    }
+    .Tobar-left p {
+        font-size: 0.5rem;
+    }
+}
+
 

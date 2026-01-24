@@ -5,11 +5,13 @@
   background: #000000;
   color: #ffffff;
   padding-top: 50px;
+  overflow-x: hidden; /* 🔥 prevent horizontal scroll */
 }
 
 .Footer a {
   text-decoration: none;
   color: #cccccc;
+  word-break: break-word; /* 🔥 long text fix */
 }
 
 /* ================= CONTAINER ================= */
@@ -21,6 +23,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 40px;
+  box-sizing: border-box;
 }
 
 /* ================= BOX ================= */
@@ -45,6 +48,7 @@
   font-size: 14px;
   color: #cccccc;
   line-height: 1.7;
+  word-break: break-word; /* 🔥 */
 }
 
 /* ================= LIST ================= */
@@ -60,12 +64,13 @@
   color: #cccccc;
   margin-bottom: 10px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color 0.3s, transform 0.3s; /* safer */
 }
 
+/* ✅ Use transform instead of padding */
 .footer-box ul li:hover {
   color: #ffffff;
-  padding-left: 6px;
+  transform: translateX(6px);
 }
 
 /* ================= BOTTOM ================= */
@@ -80,6 +85,7 @@
 .footer-bottom p {
   font-size: 13px;
   color: #aaaaaa;
+  word-break: break-word;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -97,4 +103,12 @@
   .footer-box ul li {
     font-size: 13px;
   }
+}
+
+/* ================= GLOBAL SAFETY (IMPORTANT) ================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
